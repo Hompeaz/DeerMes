@@ -1,0 +1,12 @@
+.deermes/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.python-version
+.mypy_cache/
+.pytest_cache/
+.DS_Store
+.env
+.env.*

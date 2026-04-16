@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "default_profile": "workspace-write",
+  "profiles": {
+    "read-only": {
+      "description": "Read only inside the project root. No writes. No shell access.",
+      "read_roots": [
+        "{project_root}"
+      ],
+      "write_roots": [],
+      "allow_shell": false,
+      "allowed_commands": [],
+      "approval_required_for": []
+    },
+    "workspace-write": {
+      "description": "Read and write inside the project root. Require approval for shell, writes, and reads outside configured roots.",
+      "read_roots": [
+        "{project_root}"
+      ],
+      "write_roots": [
+        "{project_root}"
+      ],
+      "allow_shell": true,
+      "allowed_commands": [
+        "pwd",
+        "ls",
+        "find",
+        "cat",
+        "head",
+        "tail",
+        "wc",
+        "rg",
+        "git"
+      ],
+      "approval_required_for": [
+        "read_outside_roots",
+        "write",
+        "shell"
+      ]
+    },
+    "privileged": {
+      "description": "Read and write inside the project root and home directory. Allow any shell command without per-call approval.",
+      "read_roots": [
+        "{project_root}",
+        "{home}"
+      ],
+      "write_roots": [
+        "{project_root}",
+        "{home}"
+      ],
+      "allow_shell": true,
+      "allowed_commands": [
+        "*"
+      ],
+      "approval_required_for": []
+    }
+  }
+}
